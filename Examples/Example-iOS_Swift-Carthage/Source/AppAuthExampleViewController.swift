@@ -24,7 +24,7 @@ typealias PostRegistrationCallback = (_ configuration: OIDServiceConfiguration?,
 /**
  The OIDC issuer from which the configuration will be discovered.
 */
-let kIssuer: String = "https://issuer.example.com";
+let kIssuer: String = "https://idpi.cis.dev.swalife.com";
 
 /**
  The OAuth client ID.
@@ -32,14 +32,14 @@ let kIssuer: String = "https://issuer.example.com";
  For client configuration instructions, see the [README](https://github.com/openid/AppAuth-iOS/blob/master/Examples/Example-iOS_Swift-Carthage/README.md).
  Set to nil to use dynamic registration with this example.
 */
-let kClientID: String? = "YOUR_CLIENT_ID";
+let kClientID: String? = "4a8d9e4d18cc411db2a35b21913ce0ee";
 
 /**
  The OAuth redirect URI for the client @c kClientID.
 
  For client configuration instructions, see the [README](https://github.com/openid/AppAuth-iOS/blob/master/Examples/Example-iOS_Swift-Carthage/README.md).
 */
-let kRedirectURI: String = "com.example.app:/oauth2redirect/example-provider";
+let kRedirectURI: String = "idpi.cis.dev.swalife.com:/SecureAuth548";
 
 /**
  NSCoding key for the authState property.
