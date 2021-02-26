@@ -24,7 +24,7 @@ typealias PostRegistrationCallback = (_ configuration: OIDServiceConfiguration?,
 /**
  The OIDC issuer from which the configuration will be discovered.
 */
-let kIssuer: String = "https://idpi.cis.dev.swalife.com";
+let kIssuer: String = "https://idpi.cis.dev.swalife.com/SecureAuth548";
 
 /**
  The OAuth client ID.
@@ -32,14 +32,21 @@ let kIssuer: String = "https://idpi.cis.dev.swalife.com";
  For client configuration instructions, see the [README](https://github.com/openid/AppAuth-iOS/blob/master/Examples/Example-iOS_Swift-Carthage/README.md).
  Set to nil to use dynamic registration with this example.
 */
-let kClientID: String? = "4a8d9e4d18cc411db2a35b21913ce0ee";
+let kClientID: String? = "4a8d9e4d18cc411db2a35b21913ce0ee"
+
+/**
+ The OAuth client Secret.
+*/
+struct Constants {
+	static let clientSecret = "e5144c1687efe763e9a4b0aded155ad61c86065c35f822056844f9d7447e0544"
+}
 
 /**
  The OAuth redirect URI for the client @c kClientID.
 
  For client configuration instructions, see the [README](https://github.com/openid/AppAuth-iOS/blob/master/Examples/Example-iOS_Swift-Carthage/README.md).
 */
-let kRedirectURI: String = "idpi.cis.dev.swalife.com:/SecureAuth548";
+let kRedirectURI: String = "com.swacorp.flightsuite:/idpresponse";
 
 /**
  NSCoding key for the authState property.
@@ -136,7 +143,7 @@ extension AppAuthExampleViewController {
             self.logMessage("Got configuration: \(config)")
 
             if let clientId = kClientID {
-                self.doAuthWithAutoCodeExchange(configuration: config, clientID: clientId, clientSecret: nil)
+                self.doAuthWithAutoCodeExchange(configuration: config, clientID: clientId, clientSecret: Constants.clientSecret)
             } else {
                 self.doClientRegistration(configuration: config) { configuration, response in
 
@@ -179,7 +186,7 @@ extension AppAuthExampleViewController {
 
             if let clientId = kClientID {
 
-                self.doAuthWithoutCodeExchange(configuration: configuration, clientID: clientId, clientSecret: nil)
+                self.doAuthWithoutCodeExchange(configuration: configuration, clientID: clientId, clientSecret: Constants.clientSecret)
 
             } else {
 
@@ -382,7 +389,7 @@ extension AppAuthExampleViewController {
         // builds authentication request
         let request = OIDAuthorizationRequest(configuration: configuration,
                                               clientId: clientID,
-                                              clientSecret: clientSecret,
+                                              clientSecret: Constants.clientSecret,
                                               scopes: [OIDScopeOpenID, OIDScopeProfile],
                                               redirectURL: redirectURI,
                                               responseType: OIDResponseTypeCode,
@@ -418,7 +425,7 @@ extension AppAuthExampleViewController {
         // builds authentication request
         let request = OIDAuthorizationRequest(configuration: configuration,
                                               clientId: clientID,
-                                              clientSecret: clientSecret,
+                                              clientSecret: Constants.clientSecret,
                                               scopes: [OIDScopeOpenID, OIDScopeProfile],
                                               redirectURL: redirectURI,
                                               responseType: OIDResponseTypeCode,
